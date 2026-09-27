@@ -54,10 +54,12 @@ def restruct_render(input_file, output_file):
     txt_context = ''
     with open(input_file, mode='r', encoding='utf-8') as fd:
         for l in fd.readlines():
+            # Only the first space separates the image ID from the label. Internal
+            # and trailing spaces belong to the label; strip line endings only.
             base, sep, word = l.rstrip('\r\n').partition(' ')
             if not sep or not base or not word.strip():
                 raise ValueError(f"Malformed renderer label: {l!r}")
-            txt_context += os.path.dirname(input_file) + "/" + base + ".jpg\t" + word + '\n' 
+            txt_context += os.path.dirname(input_file) + "/" + base + ".jpg\t" + word + '\n'
 
     txt_context = txt_context.replace('\\', '/')
 

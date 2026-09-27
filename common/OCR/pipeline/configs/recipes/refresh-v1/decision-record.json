@@ -1,0 +1,57 @@
+{
+  "version": "final-training-v1",
+  "purpose": "one formal, frozen training pass for the MaaAI OCR refresh",
+  "dataset": {
+    "base_train_per_route": 10000,
+    "dev_per_route": 2000,
+    "expanded_routes": {
+      "char": 20000
+    },
+    "reason": "matched 10k/20k trials found no stable gain for zh-CN, zh-TW, en or ja; ko gain was marginal; char improved at 20k/step 500"
+  },
+  "routes": {
+    "zh-CN": {
+      "model": "PP-OCRv6 small",
+      "sampling": "balanced",
+      "steps": 1000
+    },
+    "zh-TW": {
+      "model": "PP-OCRv6 small",
+      "sampling": "historical",
+      "steps": 1000
+    },
+    "en": {
+      "model": "PP-OCRv6 small",
+      "sampling": "historical",
+      "steps": 1000
+    },
+    "ja": {
+      "model": "PP-OCRv6 small",
+      "sampling": "balanced",
+      "steps": 1000
+    },
+    "ko": {
+      "model": "Korean PP-OCRv5 mobile",
+      "sampling": "balanced",
+      "steps": 1000
+    },
+    "char": {
+      "model": "PP-OCRv6 small ASCII subset",
+      "sampling": "historical",
+      "steps": 500
+    }
+  },
+  "shared": {
+    "batch": 16,
+    "learning_rate": 5e-06,
+    "seed": 20260925,
+    "checkpoint_evaluation_every": 500
+  },
+  "acceptance": {
+    "primary_client": "Official",
+    "official_client_quality": "release_gate",
+    "other_clients": "required_follow_up",
+    "linux_performance": "record_only_future_optimization",
+    "windows_integration": "required_external_validation"
+  }
+}

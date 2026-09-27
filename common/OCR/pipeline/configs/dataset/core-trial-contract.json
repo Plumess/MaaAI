@@ -1,0 +1,18 @@
+{
+  "id": "core-trial-v1",
+  "purpose": "bounded learning-effect trial, not full dataset acceptance",
+  "input_shape": [3, 48, 320],
+  "max_steps": 500,
+  "families": {
+    "stage_code": {"route": "CharOCR", "appearance_status": "capability_retention_proxy"},
+    "battle_cost": {"route": "CharOCR", "appearance_status": "calibrated_proxy"},
+    "ascii_replay": {"route": "CharOCR", "appearance_status": "capability_retention_proxy"},
+    "recruitment": {"route": "WordOCR", "appearance_status": "calibrated_proxy"},
+    "item_name": {"route": "WordOCR", "appearance_status": "calibrated_proxy"},
+    "depot_quantity": {"route": "WordOCR", "appearance_status": "calibrated_proxy"}
+  },
+  "source_rule": "Fresh generated pixels only; fitted styles are shared development knowledge. Original capture pixels and derivatives stay development only.",
+  "split_rule": "Open labels disjoint by stable hash; original item templates split by identity. No finite-label overlap exception needed in this version.",
+  "held_out_rule": "Reserved label partition, frozen evaluation images, held-out theme and final evaluation source remain excluded.",
+  "pilot_review": "30 examples across six families visually inspected in core-trial-pilot-v2; full pilot 288 images replayed, source/encoding/split checked; exact game font identity remains unconfirmed"
+}

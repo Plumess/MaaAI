@@ -1,0 +1,47 @@
+{
+  "version": "recognition-recipe-v3",
+  "contract": "configs/dataset/recipe-contract-v3.json",
+  "languages": {
+    "zh-CN": {
+      "client": "Official",
+      "model": "v6",
+      "checkpoint": "weights/PP-OCRv6_small_rec_pretrained.pdparams"
+    },
+    "zh-TW": {
+      "client": "txwy",
+      "model": "v6",
+      "checkpoint": "weights/PP-OCRv6_small_rec_pretrained.pdparams"
+    },
+    "en": {
+      "client": "YoStarEN",
+      "model": "v6",
+      "checkpoint": "weights/PP-OCRv6_small_rec_pretrained.pdparams"
+    },
+    "ja": {
+      "client": "YoStarJP",
+      "model": "v6",
+      "checkpoint": "weights/PP-OCRv6_small_rec_pretrained.pdparams"
+    },
+    "ko": {
+      "client": "YoStarKR",
+      "model": "v5-korean",
+      "checkpoint": "models/ko/initial.pdparams",
+      "dictionary": "models/ko/keys.txt"
+    }
+  },
+  "checkpoint_sources": {
+    "ko": "https://paddle-model-ecology.bj.bcebos.com/paddlex/official_pretrained_model/korean_PP-OCRv5_mobile_rec_pretrained.pdparams"
+  },
+  "scope": "Source/render profile only; finite training budget and initialization come from the explicit frozen train spec. Executable route sampling comes from recipes/refresh-v1/recipe.json and sampling-policy-v1.json; route-strategies.json is used only by the explicit audit-pool command.",
+  "english_whole_run_fallback": {
+    "path": "data/fonts/BENDER.OTF",
+    "sha256": "b394fe0c3a3aa85784e9928b3a0288c578b438a0db7aa14fbcc686da64143444",
+    "family": "Bender",
+    "style": "Regular",
+    "appearance_status": "coverage fallback, not a verified regional UI font"
+  },
+  "char": {
+    "model": "v6-ascii",
+    "checkpoint": "models/char/initial.pdparams"
+  }
+}

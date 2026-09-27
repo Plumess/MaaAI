@@ -1,0 +1,44 @@
+"""Shared deterministic rendering and provenance helpers."""
+import copy,json
+import numpy as np
+from functools import lru_cache
+from PIL import Image,ImageFilter
+from file_utils import sha
+from workspace import ROOT, RT
+from asset_utils import asset_path
+from scene_style import raster
+from scene_dataset import pixel_hash
+from dataset_contract import split
+
+def write(path,data):path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
+
+@lru_cache(maxsize=128)
+def source_sha(path):return sha(path)
+
+def ref(path,pointer):return {'path':str(path.resolve().relative_to(RT)),'sha256':source_sha(path),'json_pointer':pointer}
+
+def sample_params(family,rng,recipe,part):
+    regular=family not in ['battle_cost','ascii_replay','stage_code']
+    return {'style':family,'font_size_delta':rng.choice([-1,0,0,0,1]),'horizontal_scale_delta':rng.choice([-.02,0,0,.02]),
+      'padding':[rng.randint(2,6) for _ in range(4)],'capture_scale':rng.choice([.75,1.,1.,1.,1.25]),
+      'blur':rng.choice([0.,0.,0.,.2]),'ink':rng.randint(230,255),
+      'background':rng.randint(42,56) if regular else rng.randint(12,40),
+      'template':rng.choice([i for i in range(len(recipe['templates'])) if (i%5==0)==(part=='dev')]) if family=='depot_quantity' else None,
+      'template_offset':[rng.randint(-3,3),rng.randint(-3,3)],'background_multiplier':.40,
+      'edge_blur':.25 if family=='depot_quantity' else 0.}
+
+def render(label,params,recipe):
+    style=copy.deepcopy(recipe['styles'][params['style']]);style['font_size']+=params['font_size_delta'];style['horizontal_scale']+=params['horizontal_scale_delta']
+    alpha=raster(label,style);left,top,right,bottom=params['padding'];w=alpha.width+left+right;h=alpha.height+top+bottom
+    base=Image.new('RGB',(w,h),(params['background'],)*3)
+    if params['template'] is not None:
+        path=asset_path(recipe['templates'][params['template']]);raw=Image.open(path).convert('RGB').resize((144,144),Image.Resampling.BILINEAR)
+        if w>140 or h>70:raise ValueError('quantity larger than supported item component')
+        dx,dy=params['template_offset'];x=max(0,min(144-w,144-w-4+dx));y=max(0,min(144-h,125-h+dy))
+        base=raw.crop((x,y,x+w,y+h));base=Image.fromarray(np.uint8(np.asarray(base)*params['background_multiplier']))
+    mask=Image.new('L',(w,h));mask.paste(alpha,(left,top))
+    if params['edge_blur']:mask=mask.filter(ImageFilter.GaussianBlur(params['edge_blur']))
+    base.paste((params['ink'],)*3,(0,0,w,h),mask)
+    if params['blur']:base=base.filter(ImageFilter.GaussianBlur(params['blur']))
+    size=[max(1,round(v*params['capture_scale'])) for v in base.size]
+    return base.resize(size,Image.Resampling.BILINEAR)

@@ -1,0 +1,22 @@
+"""Hash-checked source assets and Unicode font coverage."""
+
+from functools import lru_cache
+
+from file_utils import sha
+from fontTools.ttLib import TTFont
+from workspace import RT
+
+
+def asset_path(asset, runtime=RT):
+    path = (runtime / asset["path"]).resolve()
+    if not path.is_relative_to(runtime.resolve()):
+        raise ValueError("asset escapes runtime")
+    if sha(path) != asset["sha256"]:
+        raise ValueError(f"asset hash mismatch: {path}")
+    return path
+
+
+@lru_cache(maxsize=32)
+def cmap(path):
+    with TTFont(path) as font:
+        return frozenset(font.getBestCmap() or {})

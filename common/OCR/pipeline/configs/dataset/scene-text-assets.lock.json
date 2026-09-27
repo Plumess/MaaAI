@@ -1,0 +1,154 @@
+{
+  "files": [
+    {
+      "id": "cn-gacha_table",
+      "path": "data/assets/word/game/cn/gacha_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/cn/gamedata/excel/gacha_table.json",
+      "role": "scene_game_text",
+      "locale": "cn",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "f9ea69f62fd4cd7f725d60c13904b10465a73b85dffc54fc3278a3474a8995aa",
+      "bytes": 550526
+    },
+    {
+      "id": "cn-building_data",
+      "path": "data/assets/word/game/cn/building_data.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/cn/gamedata/excel/building_data.json",
+      "role": "scene_game_text",
+      "locale": "cn",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "ba269246abaea88f43bf28cfe7134e13a33070536f35cf8717d2078c3e5988cc",
+      "bytes": 6576523
+    },
+    {
+      "id": "cn-skill_table",
+      "path": "data/assets/word/game/cn/skill_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/cn/gamedata/excel/skill_table.json",
+      "role": "scene_game_text",
+      "locale": "cn",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "9a4dbf26d4d10d5ef91728951cee3ab8cceacbdff5c1f03ae9d188425c52d8f0",
+      "bytes": 15126282
+    },
+    {
+      "id": "tw-gacha_table",
+      "path": "data/assets/word/game/tw/gacha_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/tw/gamedata/excel/gacha_table.json",
+      "role": "scene_game_text",
+      "locale": "tw",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "9e5ebfe66e38d0c321aacd6968999895ee491601a7c036d69c192165b291d283",
+      "bytes": 457304
+    },
+    {
+      "id": "tw-building_data",
+      "path": "data/assets/word/game/tw/building_data.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/tw/gamedata/excel/building_data.json",
+      "role": "scene_game_text",
+      "locale": "tw",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "7481af702b6b0ed82e49e5ea8b7ae704a79e6e463192bc8b47f4df85a1b16480",
+      "bytes": 6068437
+    },
+    {
+      "id": "tw-skill_table",
+      "path": "data/assets/word/game/tw/skill_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/tw/gamedata/excel/skill_table.json",
+      "role": "scene_game_text",
+      "locale": "tw",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "d268412bb61f728c3a917ce713020ba5a46e3f52aad013fc9661a4e97998a62f",
+      "bytes": 13898380
+    },
+    {
+      "id": "en-gacha_table",
+      "path": "data/assets/word/game/en/gacha_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/en/gamedata/excel/gacha_table.json",
+      "role": "scene_game_text",
+      "locale": "en",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "72095fb56d517bf2bdd8b3665b25957599f1e7a73d1f597f325a34bc764f3e08",
+      "bytes": 490304
+    },
+    {
+      "id": "en-building_data",
+      "path": "data/assets/word/game/en/building_data.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/en/gamedata/excel/building_data.json",
+      "role": "scene_game_text",
+      "locale": "en",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "032431642367f3f6843c799ef42f9374f306016dcaa0becc3ce1d3dd86157955",
+      "bytes": 6278411
+    },
+    {
+      "id": "en-skill_table",
+      "path": "data/assets/word/game/en/skill_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/en/gamedata/excel/skill_table.json",
+      "role": "scene_game_text",
+      "locale": "en",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "8a7481a3c09d106e3d04d1820d76afb74aed8f05213787d471f03ec18e16288d",
+      "bytes": 14209131
+    },
+    {
+      "id": "jp-gacha_table",
+      "path": "data/assets/word/game/jp/gacha_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/jp/gamedata/excel/gacha_table.json",
+      "role": "scene_game_text",
+      "locale": "jp",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "3354f1db6b0b3954bc1e8dfadc9d97861e351ab42c92501e653f5e77db552026",
+      "bytes": 499558
+    },
+    {
+      "id": "jp-building_data",
+      "path": "data/assets/word/game/jp/building_data.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/jp/gamedata/excel/building_data.json",
+      "role": "scene_game_text",
+      "locale": "jp",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "d042602e37555462d9285057e2a273428ffcf1102d555bcf03b9e43d90bced7d",
+      "bytes": 6350449
+    },
+    {
+      "id": "jp-skill_table",
+      "path": "data/assets/word/game/jp/skill_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/jp/gamedata/excel/skill_table.json",
+      "role": "scene_game_text",
+      "locale": "jp",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "bf0830954ff4256384705ea085fb6e8419821ecc668933e6473400aca85296bc",
+      "bytes": 14500826
+    },
+    {
+      "id": "kr-gacha_table",
+      "path": "data/assets/word/game/kr/gacha_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/kr/gamedata/excel/gacha_table.json",
+      "role": "scene_game_text",
+      "locale": "kr",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "99fbd4eaad767cd6e6e928c78796421bfbc258578526d239f801b89a665e711f",
+      "bytes": 502480
+    },
+    {
+      "id": "kr-building_data",
+      "path": "data/assets/word/game/kr/building_data.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/kr/gamedata/excel/building_data.json",
+      "role": "scene_game_text",
+      "locale": "kr",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "619d4f1bc605ceeb382900b50663e3317df24276af972caa9f6c4e36d3b0ca56",
+      "bytes": 6362030
+    },
+    {
+      "id": "kr-skill_table",
+      "path": "data/assets/word/game/kr/skill_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/kr/gamedata/excel/skill_table.json",
+      "role": "scene_game_text",
+      "locale": "kr",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "457dbde56fba1327f8363b0e951af3d9fb101777ce8688e4dbcca5abe648873e",
+      "bytes": 14386778
+    }
+  ]
+}
