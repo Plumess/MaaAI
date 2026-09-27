@@ -1,0 +1,646 @@
+{
+  "schema": "maaai-ocr-final-evidence-v2",
+  "recorded_at": "2026-09-27",
+  "status": "formal-v2 passes Linux and Windows v6.18.0 Char repair and Chinese release integration; overseas real-client validation pending",
+  "repository": {
+    "upstream_base": "7250cacc15c3b41c334937576d881845bee1ea71",
+    "branch": "ocr/refresh-validated-pipeline"
+  },
+  "baseline": {
+    "maa_release": "v6.18.0",
+    "release_source_commit": "23feeddc538de4e10646b692b0bb065efe77ccb3",
+    "maa_utils_commit": "6e9ba33f6ad835418097d9324c01c44a82825a2b",
+    "linux_release_archive_sha256": "28d2b05546c566837e303c24170bd57deaeb18c93bdedd87950b96ae157562c0",
+    "windows_x64_release_archive_sha256": "02347e3a589d8030562e693feb2cb063a2c76e0880b6553b4aa94ed327956ca3",
+    "runtime_hashes": {
+      "libMaaCore.so": "c39c3cf1f0b48283ac7c96fd5fdf24df526ad27a52138603cecdac2dbaa3ed1f",
+      "libfastdeploy_ppocr.so": "ba378f22e794571e4a6df1b08b75bf1e2f3a7385763744d94916127b482c5f62",
+      "libonnxruntime.so.1": "58857ac312e8bbdbb7ba81ced81cec07c585b27ce3323f89f9e6a946033346de",
+      "libopencv_world4.so.412": "5d154fce14cb3d04e236b9196155f320ae42c6e95ed7fdd607f65c1de5a0916b"
+    },
+    "v6_17_5_to_v6_18_0": "OCR rec/det/dict resources are byte-identical; MaaCore and task resources changed; all formal probes were rerun with v6.18.0"
+  },
+  "environment": {
+    "fresh_external_runtime": true,
+    "uv_lock_sha256": "84541656c75d5b41ef08a163604b1b6398e17daa62dd34990338fe815a3f323a",
+    "doctor": {
+      "passed": true,
+      "sha256": "08697e457bcc215e7422983dc0d15fabecc7ce2af5c19a76907ed0e6229ad5fc"
+    },
+    "installed_packages_and_host_sha256": "70b24158ad67a29eb3d4db981bf17bb48b00e0758c99bf2d451790106f0281af",
+    "paddle": "3.4.0",
+    "gpu": "NVIDIA GeForce RTX 4060 Ti 16 GB",
+    "driver": "580.167.08"
+  },
+  "sources": {
+    "game_data_repository": "ArknightsAssets",
+    "game_data_commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+    "exact_corpus_fields": 25358,
+    "paddleocr_commit": "b03f46425e8ff4442b268ce449e3eef758146cd4",
+    "pretrained_sha256": {
+      "PP-OCRv6_small": "25c9bd54b0e5900916e8bb6ada938abeffb1eac1baedac0ca54a45b1c9310825",
+      "korean_PP-OCRv5_mobile": "8975dede5e0c2f47e0a7712b3d79ffdc766972f872fd0441ebcccd9d77cd52a3"
+    }
+  },
+  "dataset": {
+    "id": "final-dataset-v1",
+    "samples": 82000,
+    "manifest_sha256": "33faf78642e9e6d31fca1daf5781e2c736ba800c4d266342ba7b3c56f576d21d",
+    "recipe_sha256": "bcc41b1c78c96558201a88dd4b9e8b6796819eb02a9ae70231c7a2b7611a537f",
+    "audit_sha256": "db600cfb7591e3615b285869102d486a9e155fa48e8cd97975283107a7755d80",
+    "preflight_sha256": "d2d2cf4f1eb6c77c4378355e6b3a932b928ec5c62452d4b5b7c6da7ec23bf8b7",
+    "audit_passed": true,
+    "exact_replays": 82000,
+    "unique_pixels": 82000,
+    "layout": "zh-CN/zh-TW/en/ja/ko each 10,000 train + 2,000 dev; char 20,000 train + 2,000 dev",
+    "archive": {
+      "name": "final-dataset-v1.tar.gz",
+      "sha256": "bd9f2589982a53d28c85f9f04dfeac22c3fbd192fea9eceb1cba7b9731aa0996",
+      "bytes": 274967803
+    },
+    "selection_reason": "matched 10k/20k trials found no stable gain for the five Word routes; char improved at 20k/500",
+    "metadata_note": "The generator audit uses its conservative bounded-trial label and forbids synthetic rows as formal evaluation. Formal-training admission is established by the frozen plans and preflight; independent acceptance uses separate real screenshots.",
+    "candidate_total_samples": 82448,
+    "char_rework": {
+      "id": "char-rework-v2",
+      "base_samples": 22000,
+      "real_replay_samples": 448,
+      "combined_char_samples": 22448,
+      "train_samples": 20448,
+      "dev_samples": 2000,
+      "manifest_sha256": "9e238f210d728358aebcd2fe856091785b273ad66eb476f76b62a7b0d8cb35f4",
+      "recipe_sha256": "8193902e0f8489e72e83c781cf43e0421b103c198bd2c4f3bf4e7198d8bacf2d",
+      "audit_sha256": "e7e3c8d850deb62c4dc824da1dc3472c045db843d3dbd537854f8de4484896e7",
+      "preflight_sha256": "c412bf87b0051a8483d76d34d83f5c0e8d8c59726b7cf06b06a94e4b06f4589b",
+      "source_spec_sha256": "0d1e94e0869a8f7566a45604b26e4b82606c0c816def3b26b36f749b0d937d75",
+      "MaaTestSet_commit": "dfb2238c3882a396026d9963e0b5c6fcc6c858c4",
+      "training_only": true,
+      "independent_acceptance_use": false
+    }
+  },
+  "development_evaluation": {
+    "purpose": "checkpoint selection only; not independent accuracy",
+    "routes": {
+      "zh-CN": {
+        "count": 386,
+        "manifest_sha256": "ab6b6e35979cc96ac72f88620fde4e3ced8448625089c92c84f467bafed06093",
+        "sources": {
+          "zh-CN-source.jsonl": "ae216aec13174533bb21de69301d5252d56873b91e0e5277fc894aeb5b1cd33d"
+        }
+      },
+      "zh-TW": {
+        "count": 383,
+        "manifest_sha256": "f838cc4688ead06bd157fc5d4c522991a3e43159ab143227dea2a5685479c3a9",
+        "sources": {
+          "zh-TW-source.jsonl": "12afb394a97878683cac712251cba61091778aba3870d6f668563e9dbdce4047"
+        }
+      },
+      "en": {
+        "count": 387,
+        "manifest_sha256": "20ae8185ba737aa5622c1e05ee9c5bffc4e9b4f7815c65a6d250eac77a79f463",
+        "sources": {
+          "en-source.jsonl": "02561245ac8ddf8e9b276415da5a49766b7703fb48f683182e58e8612c59dfad"
+        }
+      },
+      "ja": {
+        "count": 388,
+        "manifest_sha256": "9ece1fab5a6aba944fe5c5ca7ad5beb97044b888824b202b03e9a27d0640bd4a",
+        "sources": {
+          "ja-source.jsonl": "c948f1a99ec37a502e0a11040440068aca3bf0803d12190b20d204ca4fdcb9dd"
+        }
+      },
+      "ko": {
+        "count": 391,
+        "manifest_sha256": "2536999744756a1a10581f7b5df80199c095c6ee84cd8251000d6dedeea7ce55",
+        "sources": {
+          "ko-source.jsonl": "13125e4cb0ccfa3526a623a90b2bc46ecdb2240cefde1f2a4ea14efac384ea7d"
+        }
+      },
+      "char": {
+        "count": 318,
+        "manifest_sha256": "bd2b5028f8e46cc2ff9673177509b3eaa3c18ede967e45a6f6716999fb83ed4a",
+        "sources": {
+          "char-source.jsonl": "cb77d05b626f4c67147e8ffc788f2978477c9ce24db6211cdfdd8ba7142b4f4b"
+        },
+        "scores": {
+          "raw_count": 239,
+          "rule_count": 79,
+          "official_v6_18_0": {
+            "raw": 227,
+            "rules": 79
+          },
+          "formal_v1": {
+            "raw": 232,
+            "rules": 79
+          },
+          "formal_v2": {
+            "raw": 238,
+            "rules": 79
+          }
+        }
+      }
+    },
+    "guard_per_route": 120
+  },
+  "formal_training": {
+    "recipe_sha256": "0c277c3397dee611cbe7fb3b12a4b1300364fe80be3ea095768b03934e9f56cd",
+    "routes": {
+      "zh-CN": {
+        "model": "v6",
+        "selected_step": 500,
+        "planned_steps": 1000,
+        "completed_steps": 1000,
+        "train_samples": 10000,
+        "dev_samples": 2000,
+        "guard_samples": 120,
+        "batch": 16,
+        "learning_rate": 5e-06,
+        "sampling": "balanced",
+        "checkpoint_sha256": "42dde605914c58427000f29a066c241c89680c07a8c44ddc6c265d98ab432320",
+        "onnx_sha256": "a43043964bcb5160bc7e0688b1cc8ec9861372fc774bea67495d41e50f570bed",
+        "export_equivalence": {
+          "passed": true,
+          "samples": 42
+        },
+        "development_selection": {
+          "candidate": {
+            "raw": 231,
+            "rules": 155
+          },
+          "official_v6_18_0": {
+            "raw": 211,
+            "rules": 155
+          },
+          "new_real_errors_vs_official": [],
+          "new_rule_errors_vs_official": []
+        },
+        "training_elapsed_seconds": 131.7146134376526,
+        "gpu_peak_allocated_bytes": 1719582720,
+        "plan_sha256": "c67ab99be049a3ab9e4851b5d0bd833367d76282f769c0caf01e1c55c50c1cc7",
+        "spec_sha256": "11522fa0c2ce97899faaf5fd41c8d8c04e2f258c2e0994389ea59c6ddc758925",
+        "status": "selected_at_step_500"
+      },
+      "zh-TW": {
+        "model": "v6",
+        "selected_step": 500,
+        "planned_steps": 1000,
+        "completed_steps": 1000,
+        "train_samples": 10000,
+        "dev_samples": 2000,
+        "guard_samples": 120,
+        "batch": 16,
+        "learning_rate": 5e-06,
+        "sampling": "historical",
+        "checkpoint_sha256": "f622b1c835816dbb1beb77b1f6ea8379c7ca02c21b28af9e44046e703d306fe1",
+        "onnx_sha256": "4a00825e59475e75fd5c5513ed6dee0b48eed941bbcfae26d466ec7246a0b0a5",
+        "export_equivalence": {
+          "passed": true,
+          "samples": 42
+        },
+        "development_selection": {
+          "candidate": {
+            "raw": 228,
+            "rules": 153
+          },
+          "official_v6_18_0": {
+            "raw": 218,
+            "rules": 149
+          },
+          "new_real_errors_vs_official": [],
+          "new_rule_errors_vs_official": []
+        },
+        "training_elapsed_seconds": 160.51196090877056,
+        "gpu_peak_allocated_bytes": 1734059776,
+        "plan_sha256": "42a492e85d054797497d6801c843a3ecc232f9a899e87a94f8223d6ec10c0044",
+        "spec_sha256": "9626488542b27dfdc65d24b8f1ead543b77045f558ca653e6add6a597b8208a8",
+        "status": "selected_at_step_500"
+      },
+      "en": {
+        "model": "v6",
+        "selected_step": 500,
+        "planned_steps": 1000,
+        "completed_steps": 1000,
+        "train_samples": 10000,
+        "dev_samples": 2000,
+        "guard_samples": 120,
+        "batch": 16,
+        "learning_rate": 5e-06,
+        "sampling": "historical",
+        "checkpoint_sha256": "f907774c6ca906452777e44cdf78f05883c39bbd15aab7049f6048d20446f140",
+        "onnx_sha256": "2b0166cdcb24a714fcffdf1a91505568ec44facdf0018d1be54a0d5d09d0a65e",
+        "export_equivalence": {
+          "passed": true,
+          "samples": 42
+        },
+        "development_selection": {
+          "candidate": {
+            "raw": 233,
+            "rules": 154
+          },
+          "official_v6_18_0": {
+            "raw": 182,
+            "rules": 154
+          },
+          "new_real_errors_vs_official": [],
+          "new_rule_errors_vs_official": []
+        },
+        "training_elapsed_seconds": 248.1713092289865,
+        "gpu_peak_allocated_bytes": 1744983808,
+        "plan_sha256": "e9f846ca652911a1f36473959585eff15619cf50ab9e2cfecb53f25c89680b10",
+        "spec_sha256": "fa619ce666b28fabda5869e62c0191b8b20006e15c81247d0a0023e5b3512f88",
+        "status": "selected_at_step_500"
+      },
+      "ja": {
+        "model": "v6",
+        "selected_step": 500,
+        "planned_steps": 1000,
+        "completed_steps": 1000,
+        "train_samples": 10000,
+        "dev_samples": 2000,
+        "guard_samples": 120,
+        "batch": 16,
+        "learning_rate": 5e-06,
+        "sampling": "balanced",
+        "checkpoint_sha256": "a5ceaa60cb5622c79c670c3c052c7984d898e99a41dd3def4ce554ff1b5e1f04",
+        "onnx_sha256": "3408d4016d033101724f68d2b2cc95f874a8e16c4b53abb158029a2e4273fa4d",
+        "export_equivalence": {
+          "passed": true,
+          "samples": 42
+        },
+        "development_selection": {
+          "candidate": {
+            "raw": 231,
+            "rules": 155
+          },
+          "official_v6_18_0": {
+            "raw": 195,
+            "rules": 142
+          },
+          "new_real_errors_vs_official": [],
+          "new_rule_errors_vs_official": []
+        },
+        "training_elapsed_seconds": 178.94185225106776,
+        "gpu_peak_allocated_bytes": 1715980544,
+        "plan_sha256": "c9258ff9842e092ac040aa8c0500407f993bfc1943551d59e59f1dc1d2baa8d7",
+        "spec_sha256": "5074ee335ba7ba847a1a2e34ed2b3c14152357da3c1fa3456b009b6a6d1e03df",
+        "status": "selected_at_step_500"
+      },
+      "ko": {
+        "model": "v5-korean",
+        "selected_step": 500,
+        "planned_steps": 1000,
+        "completed_steps": 1000,
+        "train_samples": 10000,
+        "dev_samples": 2000,
+        "guard_samples": 120,
+        "batch": 16,
+        "learning_rate": 5e-06,
+        "sampling": "balanced",
+        "checkpoint_sha256": "fe63adce0c282b5f7fc26957aaaca4584902bb891eb66c7452dafe22558f4538",
+        "onnx_sha256": "a1ae68802b3ca4cc6fa66c6eec4b4d1174a0ced63494d5eb8cec83eed40189a3",
+        "export_equivalence": {
+          "passed": true,
+          "samples": 42
+        },
+        "development_selection": {
+          "candidate": {
+            "raw": 229,
+            "rules": 155
+          },
+          "official_v6_18_0": {
+            "raw": 150,
+            "rules": 119
+          },
+          "new_real_errors_vs_official": [],
+          "new_rule_errors_vs_official": []
+        },
+        "training_elapsed_seconds": 327.999136691913,
+        "gpu_peak_allocated_bytes": null,
+        "plan_sha256": "9ba806d34d4fe821b086fafaf6a4dc4c6b921a8ff67e279b0e1805d6ad7a91f6",
+        "spec_sha256": "7a78c34405be5cfa03b11bb0fe62e36078472ef5e21f9bae91974615c1d35b6b",
+        "status": "selected_at_step_500; step_1000 rejected because exported-model equivalence failed",
+        "rejected_step_1000": {
+          "step": 1000,
+          "reason": "export or real-scene regression",
+          "gate": {
+            "step": 1000,
+            "checkpoint_sha256": "355de7074db51a570dda28df240b98d1df975170302eca595443410e9f046ea4",
+            "export_passed": false,
+            "export": {
+              "passed": false,
+              "samples": 42,
+              "report": "formal-v2-ko/evaluations/step-0001000/export-equivalence.json",
+              "model_sha256": "4f82c65a64586e4eb35077af011ae237af17f6729ab257fe8424ffc056febfb2",
+              "checkpoint_sha256": "355de7074db51a570dda28df240b98d1df975170302eca595443410e9f046ea4"
+            },
+            "quality_eligible": false,
+            "new_real_errors_vs_current": [],
+            "release_approved": false
+          }
+        }
+      },
+      "char": {
+        "model": "v6-ascii",
+        "initial_formal_v1": {
+          "model": "v6-ascii",
+          "selected_step": 500,
+          "planned_steps": 500,
+          "completed_steps": 500,
+          "train_samples": 20000,
+          "dev_samples": 2000,
+          "guard_samples": 120,
+          "batch": 16,
+          "learning_rate": 5e-06,
+          "sampling": "historical",
+          "checkpoint_sha256": "f103a4c5461f853426e9144a45db640d523f5d8817dcbe788901cc8ae8f5df5f",
+          "onnx_sha256": "2da6cfb9705711fb6b77281ffc48316d59a86a4b5f16858cd7fe599e4373b30b",
+          "export_equivalence": {
+            "passed": true,
+            "samples": 42
+          },
+          "development_selection": {
+            "candidate": {
+              "raw": 226,
+              "rules": 79
+            },
+            "official_v6_18_0": {
+              "raw": 219,
+              "rules": 79
+            },
+            "new_real_errors_vs_official": [],
+            "new_rule_errors_vs_official": []
+          },
+          "training_elapsed_seconds": 48.26416089385748,
+          "gpu_peak_allocated_bytes": 1204889856,
+          "plan_sha256": "3e43d852d7ad0bb8a863a3a8a50ea50999b05442da35ea6ab568e1408c6c2617",
+          "spec_sha256": "fb6aa3c38a8cb4b702638db098bf4147ac5605d13bb21f34c4c8d1141ac7f5cf",
+          "status": "selected_at_step_500"
+        },
+        "rework_from_checkpoint_sha256": "f103a4c5461f853426e9144a45db640d523f5d8817dcbe788901cc8ae8f5df5f",
+        "selected_step": 100,
+        "planned_steps": 300,
+        "completed_steps": 300,
+        "train_samples": 20448,
+        "dev_samples": 2000,
+        "guard_samples": 120,
+        "batch": 16,
+        "learning_rate": 2e-06,
+        "sampling": "historical",
+        "checkpoint_sha256": "16dc407e2999c5604790543634212329d7900fffc85806a7dbc218dc4ca0436c",
+        "onnx_sha256": "27547490f5232685c0e67d485168ff482a502b9d8f1b6fde4d6c0185e1f21106",
+        "export_equivalence": {
+          "passed": true,
+          "samples": 46,
+          "report_sha256": "715695240aaa40173cb4252872997b2f100461b343d5449e2f8e86be4f71e3de"
+        },
+        "development_selection": {
+          "candidate": {
+            "raw": 238,
+            "rules": 79
+          },
+          "formal_v1": {
+            "raw": 232,
+            "rules": 79
+          },
+          "official_v6_18_0": {
+            "raw": 227,
+            "rules": 79
+          },
+          "new_real_errors_vs_formal_v1": [],
+          "new_real_errors_vs_official": [],
+          "new_rule_errors": []
+        },
+        "training_elapsed_seconds": 71.53050474077463,
+        "gpu_peak_allocated_bytes": 1204889856,
+        "plan_sha256": "69631264c3e25fd60043a8d2b3a3e635f1e6a6b33d98de79833c4a5463f74f04",
+        "spec_sha256": "3e60f993819f01972335b288bbbbfe7291bac0f9927e55423f29415539f2f384",
+        "gate_sha256": "02550201d816a700b468e2aa29a7790a8c4278b07acaa0d96af34ffd169ef2af",
+        "status": "selected_at_rework_step_100; steps 200 and 300 tied and were not selected"
+      }
+    },
+    "archive": {
+      "name": "formal-training-records-v1.tar.gz",
+      "sha256": "9836734d17c49de25e58425beacc1b9ba9357782b38d7b6b587d49e09a289470",
+      "bytes": 602722256
+    }
+  },
+  "independent_chinese_acceptance": {
+    "source": "8 unique Windows screenshots, 10 business cases, excluded from training and checkpoint selection",
+    "quality_ok": true,
+    "formal_changed_vs_official": [],
+    "new_truth_regressions": [],
+    "summary_sha256": "fcd8f8af52b040b6b935bce3b5f3c5a19d500a7ac5af733c0ebe42d975169659",
+    "manifest_sha256": "99d0211e5dab06ce42fb28bed975d949693e78aecbac02229be2057b11285448",
+    "scope": "8 independent screenshots establish business truth; Windows follow-up adds release integration and supplementary raw diagnostics",
+    "business_new_truth_regressions": [],
+    "strict_raw_recognition_gate": false,
+    "raw_diagnostic_regressions": [
+      {
+        "route": "char",
+        "truth": "0",
+        "official_raw": "0",
+        "candidate_raw": "O",
+        "after_NumberOcrReplace": "0",
+        "source": "2026-09-18 real battle screenshot; supplementary, not independent",
+        "impact": "No failure in tested numeric business path; unresolved risk remains for Char routes without NumberOcrReplace"
+      }
+    ],
+    "formal_v2_changed_vs_official": [],
+    "formal_v2_new_truth_regressions": [],
+    "formal_v2_summary_sha256": "38bbca15f79c704b74edef565f6172c2a579645764dffb02e615c2e5eb32ef47"
+  },
+  "candidate_package": {
+    "purpose": "review candidate for the MAA OCR refresh",
+    "candidate_id": "formal-v2",
+    "status": "Chinese primary acceptance and Windows integration passed; overseas live-image validation pending",
+    "baseline_version": "v6.18.0",
+    "files": {
+      "resource/PaddleOCR/rec/inference.onnx": {
+        "route": "zh-CN",
+        "sha256": "a43043964bcb5160bc7e0688b1cc8ec9861372fc774bea67495d41e50f570bed",
+        "bytes": 21143574
+      },
+      "resource/PaddleOCR/rec/keys.txt": {
+        "route": "zh-CN",
+        "sha256": "b5f2bfe2bdd9448429e3e82b51c789775d9b42f2403d082b00662eb77e401c5d",
+        "bytes": 74947
+      },
+      "resource/global/txwy/resource/PaddleOCR/rec/inference.onnx": {
+        "route": "zh-TW",
+        "sha256": "4a00825e59475e75fd5c5513ed6dee0b48eed941bbcfae26d466ec7246a0b0a5",
+        "bytes": 21143574
+      },
+      "resource/global/txwy/resource/PaddleOCR/rec/keys.txt": {
+        "route": "zh-TW",
+        "sha256": "b5f2bfe2bdd9448429e3e82b51c789775d9b42f2403d082b00662eb77e401c5d",
+        "bytes": 74947
+      },
+      "resource/global/YoStarEN/resource/PaddleOCR/rec/inference.onnx": {
+        "route": "en",
+        "sha256": "2b0166cdcb24a714fcffdf1a91505568ec44facdf0018d1be54a0d5d09d0a65e",
+        "bytes": 21143574
+      },
+      "resource/global/YoStarEN/resource/PaddleOCR/rec/keys.txt": {
+        "route": "en",
+        "sha256": "b5f2bfe2bdd9448429e3e82b51c789775d9b42f2403d082b00662eb77e401c5d",
+        "bytes": 74947
+      },
+      "resource/global/YoStarJP/resource/PaddleOCR/rec/inference.onnx": {
+        "route": "ja",
+        "sha256": "3408d4016d033101724f68d2b2cc95f874a8e16c4b53abb158029a2e4273fa4d",
+        "bytes": 21143574
+      },
+      "resource/global/YoStarJP/resource/PaddleOCR/rec/keys.txt": {
+        "route": "ja",
+        "sha256": "b5f2bfe2bdd9448429e3e82b51c789775d9b42f2403d082b00662eb77e401c5d",
+        "bytes": 74947
+      },
+      "resource/global/YoStarKR/resource/PaddleOCR/rec/inference.onnx": {
+        "route": "ko",
+        "sha256": "a1ae68802b3ca4cc6fa66c6eec4b4d1174a0ced63494d5eb8cec83eed40189a3",
+        "bytes": 13415327
+      },
+      "resource/global/YoStarKR/resource/PaddleOCR/rec/keys.txt": {
+        "route": "ko",
+        "sha256": "bec12842d8cf955c54b1d13e0b397f33d3b13260c3c191d03d16524b3972b2c1",
+        "bytes": 47463
+      },
+      "resource/PaddleCharOCR/rec/inference.onnx": {
+        "route": "char",
+        "sha256": "27547490f5232685c0e67d485168ff482a502b9d8f1b6fde4d6c0185e1f21106",
+        "bytes": 12117105
+      },
+      "resource/PaddleCharOCR/rec/keys.txt": {
+        "route": "char",
+        "sha256": "23d40abd395f6f95309602e038d7a5c7e8c5ff2fb06b48b21783cce1b983abf0",
+        "bytes": 188
+      }
+    },
+    "binary_included": false,
+    "detection_models_included": false,
+    "task_json_changes": false,
+    "release_approved": false,
+    "zip_sha256": "e32dad96ef88a452b339a51a6ae7bc0e5548a5d115e5f3c7ac2ea5b3f1a4f964"
+  },
+  "acceptance_policy": {
+    "Chinese_quality": "formal-v2 fixes the real StageDrops 0-1 -> O-1 regression and passes Windows Chinese release integration: 9 positive cases passed, depot_all remains a shared failure, and no new business differences were introduced",
+    "overseas_languages": "required follow-up on real client images; development checks passed but are not independent acceptance",
+    "Windows_release_integration": "formal-v2 passed Windows v6.18.0 two-layer resource isolation, Char delta replay, corrected real battle-cost 0, and Chinese business no-regression; GUI/direct unmodified published-core inference remains incomplete",
+    "performance": "no blocking threshold in this iteration; record measurements and optimize later"
+  },
+  "known_invalid_run": {
+    "formal-v1-zh-CN": "discarded before selection because the export-equivalence selector only matched raw/v3 IDs; fixed to accept any raw/ prefix and covered by test"
+  },
+  "package_integrity": {
+    "zip_sha256": "e32dad96ef88a452b339a51a6ae7bc0e5548a5d115e5f3c7ac2ea5b3f1a4f964",
+    "twelve_resource_files": 12,
+    "detection_models_included": false,
+    "task_json_changes": false,
+    "runtime_changes": false,
+    "formal_v1_to_v2_changed_files": [
+      "resource/PaddleCharOCR/rec/inference.onnx"
+    ]
+  },
+  "windows_release_validation": {
+    "date": "2026-09-26",
+    "delivery_zip_sha256": "91e42f5e717c24a2948c19f723fd5c97075b5399840b47d1349ce64042c8a647",
+    "official_windows_zip_sha256": "02347e3a589d8030562e693feb2cb063a2c76e0880b6553b4aa94ed327956ca3",
+    "candidate_zip_sha256": "bb1b83f04465686988fe9f1934974472627d45fe5734fc2d922a9ac428aeccd1",
+    "platform": "Windows 10 19045 x64; CPU ONNX Runtime; 4 OCR threads",
+    "resource_isolation": {
+      "files_compared": 10107,
+      "allowed_changed_files": 12,
+      "unexpected_changes": 0,
+      "post_run_unchanged": true
+    },
+    "published_core_resource_registration": true,
+    "business_replay": {
+      "real_images": 13,
+      "whole_frame_cases": 10,
+      "positive_truth_passed": 9,
+      "shared_failure": [
+        "depot_all"
+      ],
+      "candidate_business_differences_vs_official": []
+    },
+    "raw_diagnostic": {
+      "truth": "0",
+      "official": "0",
+      "candidate": "O",
+      "after_NumberOcrReplace": "0",
+      "strict_gate_passed": false
+    },
+    "performance": {
+      "blocking_threshold": null,
+      "hot_calls_per_side_per_route": 3000,
+      "cold_processes_per_side_per_route": 10,
+      "word": {
+        "official_p95_ms": 5.99201,
+        "candidate_p95_ms": 6.308415,
+        "candidate_official_ratio": 1.0528044846387106
+      },
+      "char": {
+        "official_p95_ms": 13.422849999999997,
+        "candidate_p95_ms": 7.2381,
+        "candidate_official_ratio": 0.5392371962735188
+      }
+    },
+    "status": "needs_fix under strict raw-recognition policy; tested Chinese business paths pass",
+    "limitations": [
+      "Model inference used an instrumented Release DLL built from exact v6.18.0 source; engine dependency DLLs matched the release package, but MaaCore.dll and MaaUtils.dll hashes differed.",
+      "GUI interaction and direct internal inference through the unmodified published MaaCore.dll were not tested.",
+      "zh-TW, en, ja and ko real-client images were not tested."
+    ],
+    "scope": "formal-v1 evidence retained; formal-v2 Windows Char delta completed",
+    "formal_v2_candidate_zip_sha256": "e32dad96ef88a452b339a51a6ae7bc0e5548a5d115e5f3c7ac2ea5b3f1a4f964",
+    "formal_v2_delta_status": "pass_cn_integration",
+    "formal_v2_delta_report_sha256": "3abe034a85293500afe2e9ad86e78014fca69d106fbd6e1b889a553abdd341a3",
+    "formal_v2_delta_report": "windows-formal-v2-result.md",
+    "formal_v2_resource_isolation": {
+      "official_to_v2_changed_files": 12,
+      "formal_v1_to_v2_changed_files": [
+        "resource/PaddleCharOCR/rec/inference.onnx"
+      ],
+      "files_compared": 10107,
+      "post_run_unchanged": true
+    },
+    "formal_v2_char_results": {
+      "stage_0_1": "0-1",
+      "stage_OF_F4": "OF-F4",
+      "stage_10_3": "10-3",
+      "stage_10_16": "10-16",
+      "isolated_zero": "0",
+      "battle_cost_zero": "0"
+    },
+    "formal_v2_chinese_business": "9 positive cases passed; depot_all remains a shared failure; no new business-output differences",
+    "battle_cost_zero_source_sha256": "fe69e593b13db61a34333f2a8e6a51d85bbbc83263f138ab013a901d02de3137"
+  },
+  "char_followup": {
+    "date": "2026-09-27",
+    "baseline": "MAA v6.18.0 native analyzer",
+    "formal_v1_failure": {
+      "truth": "0-1",
+      "official": "0-1",
+      "formal_v1": "O-1",
+      "impact": "full StageDropsImageAnalyzer regression; Word fallback does not run"
+    },
+    "formal_v2": {
+      "selected_rework_step": 100,
+      "real_crop_results": {
+        "0-1": "0-1",
+        "OF-F4": "OF-F4",
+        "10-3": "10-3",
+        "10-16": "10-16",
+        "battle_cost_0": "0"
+      },
+      "guard_correct": "120/120",
+      "development_raw": "238/239",
+      "rules": "79/79",
+      "full_frame_regressions": [],
+      "independent_cn_cases_correct": "9 positive cases; 1 labeled shared failure unchanged",
+      "business_outputs_changed_vs_formal_v1": []
+    },
+    "word_routes_retrained": false,
+    "verdict": "Linux repair and Windows Chinese release integration passed; overseas live-image validation pending"
+  }
+}
