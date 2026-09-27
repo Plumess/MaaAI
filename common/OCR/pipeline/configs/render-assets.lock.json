@@ -1,0 +1,68 @@
+{
+  "files": [
+    {
+      "url": "https://raw.githubusercontent.com/TimWangZi/The-font-of-Arknights/83ed0f61c0e3853cbc54cc3f5dd591505f906229/font/Novecento-Wide-Normal-2.otf",
+      "path": "data/fonts/Novecento-Wide-Normal-2.otf",
+      "sha256": "10aba19768ead3b038576d7baaf427d41b4a3b73d66f41c3ee7193ee65679156",
+      "scope": "local research; source license requires verification before redistribution",
+      "id": "Novecento-Wide-Normal-2",
+      "role": "font_candidate",
+      "redistribution": "source-specific rights; no binary assets in code PR"
+    },
+    {
+      "path": "data/fonts/SourceHanSansCN-Bold.otf",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/2.004R/SubsetOTF/CN/SourceHanSansCN-Bold.otf",
+      "sha256": "997dd673efde3a7cc7410da3ccde2a729f26dc9e1a81ad659a2d6666d36b7974"
+    },
+    {
+      "path": "data/fonts/SourceHanSansCN-Regular.otf",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/2.004R/SubsetOTF/CN/SourceHanSansCN-Regular.otf",
+      "sha256": "c0aa89a70f92a820ff95490fea6d472cd19621a71c9a748a4950eb2eafe6438e"
+    },
+    {
+      "id": "font-tw",
+      "path": "data/assets/word/fonts/SourceHanSansTW-Regular.otf",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/2.004R/SubsetOTF/TW/SourceHanSansTW-Regular.otf",
+      "role": "word_font",
+      "locale": "tw",
+      "tag": "2.004R",
+      "sha256": "3b00652fbffe1631be7afd927e4e1380d48be305595d1fb421e75215fc47f799",
+      "bytes": 5683684
+    },
+    {
+      "id": "font-jp",
+      "path": "data/assets/word/fonts/SourceHanSansJP-Regular.otf",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/2.004R/SubsetOTF/JP/SourceHanSansJP-Regular.otf",
+      "role": "word_font",
+      "locale": "jp",
+      "tag": "2.004R",
+      "sha256": "b0a8d1b14bbea20d2b159ef87a3c6961def3dbe320c3a219c61166e4c0d015d3",
+      "bytes": 4533336
+    },
+    {
+      "id": "font-kr",
+      "path": "data/assets/word/fonts/SourceHanSansKR-Regular.otf",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/2.004R/SubsetOTF/KR/SourceHanSansKR-Regular.otf",
+      "role": "word_font",
+      "locale": "kr",
+      "tag": "2.004R",
+      "sha256": "066a83ff2f4eefeeb780c2a47acec9d8518a5733a575188ac03cb9140aca78b0",
+      "bytes": 4645048
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TimWangZi/The-font-of-Arknights/83ed0f61c0e3853cbc54cc3f5dd591505f906229/font/Bender/BENDER.OTF",
+      "path": "data/fonts/BENDER.OTF",
+      "sha256": "b394fe0c3a3aa85784e9928b3a0288c578b438a0db7aa14fbcc686da64143444",
+      "scope": "local research; do not redistribute font binary without license verification",
+      "id": "BENDER",
+      "role": "font_candidate",
+      "redistribution": "source-specific rights; no binary assets in code PR"
+    },
+    {
+      "path": "data/game/cn/stage_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/cn/gamedata/excel/stage_table.json",
+      "sha256": "c9d8f19c40e8063f07432e13055f834f6ab1496c09dbb04ef082eef030712cc5"
+    }
+  ],
+  "missing_public_url": []
+}

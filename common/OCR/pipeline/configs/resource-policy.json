@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "gpu_index": 0,
+  "maximum_existing_gpu_memory_mib": 1024,
+  "minimum_free_gpu_memory_mib": 12000,
+  "maximum_gpu_temperature_c": 85,
+  "minimum_free_runtime_disk_gib": 10,
+  "scope": "Reviewed single-GPU Linux x64 training profile; change only with a new frozen plan."
+}

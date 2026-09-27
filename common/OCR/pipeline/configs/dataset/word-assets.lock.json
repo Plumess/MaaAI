@@ -1,0 +1,136 @@
+{
+  "files": [
+    {
+      "id": "cn-character_table",
+      "path": "data/assets/word/game/cn/character_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/cn/gamedata/excel/character_table.json",
+      "role": "word_game_text",
+      "locale": "cn",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "7111bd72b6490666d197e14df6fd43bbe66ba2720f4f737e981e594f82aa2e32",
+      "bytes": 21074780
+    },
+    {
+      "id": "cn-item_table",
+      "path": "data/assets/word/game/cn/item_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/cn/gamedata/excel/item_table.json",
+      "role": "word_game_text",
+      "locale": "cn",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "8fdd69aac34ce85254f2b66fc5fc4a1cc663fd8b823519fa027c10375d523c3c",
+      "bytes": 2257723
+    },
+    {
+      "id": "tw-character_table",
+      "path": "data/assets/word/game/tw/character_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/tw/gamedata/excel/character_table.json",
+      "role": "word_game_text",
+      "locale": "tw",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "722382a814e5dbc719a4c360d205812d841d041b2ad15bbabcb9d986fdbaa11c",
+      "bytes": 19054289
+    },
+    {
+      "id": "tw-item_table",
+      "path": "data/assets/word/game/tw/item_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/tw/gamedata/excel/item_table.json",
+      "role": "word_game_text",
+      "locale": "tw",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "39b591d01210cbba9bf79e124cbafea81247ab60c0f9d9f5e73ff480a01f069e",
+      "bytes": 1931813
+    },
+    {
+      "id": "en-character_table",
+      "path": "data/assets/word/game/en/character_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/en/gamedata/excel/character_table.json",
+      "role": "word_game_text",
+      "locale": "en",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "7f683026434d56c9ea5be8afd160dfc8110bcbc60fcfee41a676816fafbdfc0e",
+      "bytes": 19283062
+    },
+    {
+      "id": "en-item_table",
+      "path": "data/assets/word/game/en/item_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/en/gamedata/excel/item_table.json",
+      "role": "word_game_text",
+      "locale": "en",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "903533196c498c0e65bf7bd17be1558e15ff7db912751b363f9cd8b69bf8a858",
+      "bytes": 1908522
+    },
+    {
+      "id": "jp-character_table",
+      "path": "data/assets/word/game/jp/character_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/jp/gamedata/excel/character_table.json",
+      "role": "word_game_text",
+      "locale": "jp",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "cfd50d58bf74b3a90db6c6c4fe53a02a16cde91681b478c1dc168021c4d6fa8e",
+      "bytes": 19358797
+    },
+    {
+      "id": "jp-item_table",
+      "path": "data/assets/word/game/jp/item_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/jp/gamedata/excel/item_table.json",
+      "role": "word_game_text",
+      "locale": "jp",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "bd0a9054803e469a660ff4ae85c44dd815295240950ed05765b1edf272189a80",
+      "bytes": 1994387
+    },
+    {
+      "id": "kr-character_table",
+      "path": "data/assets/word/game/kr/character_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/kr/gamedata/excel/character_table.json",
+      "role": "word_game_text",
+      "locale": "kr",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "23611cb53aebd86200613f3a9e40ad20b3090eb65744d682f9c14958d4cf4060",
+      "bytes": 19334404
+    },
+    {
+      "id": "kr-item_table",
+      "path": "data/assets/word/game/kr/item_table.json",
+      "url": "https://raw.githubusercontent.com/ArknightsAssets/ArknightsGamedata/09df1ef62bb5e1ea3e22549a5b280c7083c85de4/kr/gamedata/excel/item_table.json",
+      "role": "word_game_text",
+      "locale": "kr",
+      "commit": "09df1ef62bb5e1ea3e22549a5b280c7083c85de4",
+      "sha256": "8920dc8f0f78d96d39f34247dddf9a84b939aa83dac512bd016048edfc98b2b3",
+      "bytes": 1974003
+    },
+    {
+      "id": "font-tw",
+      "path": "data/assets/word/fonts/SourceHanSansTW-Regular.otf",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/2.004R/SubsetOTF/TW/SourceHanSansTW-Regular.otf",
+      "role": "word_font",
+      "locale": "tw",
+      "tag": "2.004R",
+      "sha256": "3b00652fbffe1631be7afd927e4e1380d48be305595d1fb421e75215fc47f799",
+      "bytes": 5683684
+    },
+    {
+      "id": "font-jp",
+      "path": "data/assets/word/fonts/SourceHanSansJP-Regular.otf",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/2.004R/SubsetOTF/JP/SourceHanSansJP-Regular.otf",
+      "role": "word_font",
+      "locale": "jp",
+      "tag": "2.004R",
+      "sha256": "b0a8d1b14bbea20d2b159ef87a3c6961def3dbe320c3a219c61166e4c0d015d3",
+      "bytes": 4533336
+    },
+    {
+      "id": "font-kr",
+      "path": "data/assets/word/fonts/SourceHanSansKR-Regular.otf",
+      "url": "https://raw.githubusercontent.com/adobe-fonts/source-han-sans/2.004R/SubsetOTF/KR/SourceHanSansKR-Regular.otf",
+      "role": "word_font",
+      "locale": "kr",
+      "tag": "2.004R",
+      "sha256": "066a83ff2f4eefeeb780c2a47acec9d8518a5733a575188ac03cb9140aca78b0",
+      "bytes": 4645048
+    }
+  ],
+  "failed": [],
+  "scope": "initial game name corpus; not full WordOCR scene coverage"
+}
