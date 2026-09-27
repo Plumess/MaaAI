@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 echo "注意请 cd 到当前目录下再运行，并推荐在 python 虚拟环境中运行"
 echo "国内用户请挂代理，或者自己想办法将以下 repo 及字体资源放到对应目录下"
 
@@ -20,6 +23,8 @@ else
 fi
 python3 -m pip install -r text_renderer/requirements.txt
 
+python3 ./utils/patch_text_renderer.py text_renderer
+
 fonts_dir='fonts'
 wget -nc https://github.com/adobe-fonts/source-han-sans/releases/download/2.004R/SourceHanSans$fontLang.zip -P $fonts_dir
 
@@ -41,7 +46,7 @@ tar -xvf $pretrained_model/korean_PP-OCRv3_rec_train.tar -C $pretrained_model
 
 ###### 以下是离线操作了 ######
 
-yes | unzip fonts/SourceHanSans$fontLang.zip -d $fonts_dir
+unzip -oq "fonts/SourceHanSans$fontLang.zip" -d "$fonts_dir"
 ls $PWD/$fonts_dir/SubsetOTF/$fontLang/* > $fonts_dir/fonts.txt
 
 python3 ./utils/wording.py $client
@@ -53,9 +58,9 @@ num_long_img=`expr $num_img_fraction \* 60`
 num_number_img=`expr $num_img_fraction \* 10`
 output='output/render' # 下面有些 python 脚本是 hardcode的，这里的输出目录不建议修改
 
-python3 ./text_renderer/main.py --fonts_list $fonts_dir/fonts.txt --config_file render.yaml --img_width=0 --corpus_dir output/$client/short/ --corpus_mode=list --num_img $num_short_img --chars_file=output/$client/keys.txt --strict --output_dir=$output/$client/short
-python3 ./text_renderer/main.py --fonts_list $fonts_dir/fonts.txt --config_file render.yaml --img_width=0 --corpus_dir output/$client/long/ --corpus_mode=chn --length=7 --num_img $num_long_img --chars_file=output/$client/keys.txt --strict --output_dir=$output/$client/long
-python3 ./text_renderer/main.py --fonts_list $fonts_dir/fonts.txt --config_file render.yaml --img_width=0 --corpus_dir output/$client/number/ --corpus_mode=list --num_img $num_number_img --chars_file=output/$client/keys.txt --strict --output_dir=$output/$client/number
+python3 ./utils/run_renderer.py --timeout "${RENDER_TIMEOUT_SECONDS:-3600}" -- python3 -u ./text_renderer/main.py --fonts_list $fonts_dir/fonts.txt --config_file render.yaml --img_width=0 --corpus_dir output/$client/short/ --corpus_mode=list --num_img $num_short_img --chars_file=output/$client/keys.txt --strict --output_dir=$output/$client/short
+python3 ./utils/run_renderer.py --timeout "${RENDER_TIMEOUT_SECONDS:-3600}" -- python3 -u ./text_renderer/main.py --fonts_list $fonts_dir/fonts.txt --config_file render.yaml --img_width=0 --corpus_dir output/$client/long/ --corpus_mode=chn --length=7 --num_img $num_long_img --chars_file=output/$client/keys.txt --strict --output_dir=$output/$client/long
+python3 ./utils/run_renderer.py --timeout "${RENDER_TIMEOUT_SECONDS:-3600}" -- python3 -u ./text_renderer/main.py --fonts_list $fonts_dir/fonts.txt --config_file render.yaml --img_width=0 --corpus_dir output/$client/number/ --corpus_mode=list --num_img $num_number_img --chars_file=output/$client/keys.txt --strict --output_dir=$output/$client/number
 
 python3 ./utils/train_test_split.py $output/$client/short/default/tmp_labels.txt -o $output/$client/short/default
 python3 ./utils/train_test_split.py $output/$client/long/default/tmp_labels.txt -o $output/$client/long/default

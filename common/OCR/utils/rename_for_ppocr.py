@@ -4,6 +4,7 @@ from collections import defaultdict
 
 
 def as_line(input_dir, output_file):
+    """将自备图片按文件名作为文字标签写入 PaddleOCR 清单。"""
     txt_context = ''
     for path, _, file_list in os.walk(input_dir):
         for file_name in file_list:
@@ -19,6 +20,7 @@ def as_line(input_dir, output_file):
 
 
 def as_array(input_dir, output_file, offline_path=None, offline_prefix=None):
+    """按标签聚合同名图片，生成旧训练器使用的数组格式清单。"""
     text_set = defaultdict(list)
     for path, _, file_list in os.walk(input_dir):
         for file_name in file_list:
@@ -51,11 +53,16 @@ def as_array(input_dir, output_file, offline_path=None, offline_prefix=None):
 
 
 def restruct_render(input_file, output_file):
+    """把渲染器标签转为图片路径与原文，保留标签内部空格。"""
     txt_context = ''
     with open(input_file, mode='r', encoding='utf-8') as fd:
         for l in fd.readlines():
-            txt_context += os.path.dirname(input_file) + \
-                "/" + l.replace(' ', '.jpg\t')
+            # Only the first space separates the image ID from the label. Internal
+            # and trailing spaces belong to the label; strip line endings only.
+            base, sep, word = l.rstrip('\r\n').partition(' ')
+            if not sep or not base or not word.strip():
+                raise ValueError(f"Malformed renderer label: {l!r}")
+            txt_context += os.path.dirname(input_file) + "/" + base + ".jpg\t" + word + '\n'
 
     txt_context = txt_context.replace('\\', '/')
 
@@ -69,6 +76,12 @@ region = sys.argv[3]
 
 output_train_file = os.path.join(output_dir, 'rec_gt_train.txt')
 output_test_file = os.path.join(output_dir, 'rec_gt_test.txt')
+
+# Rebuild outputs so a repeated conversion does not duplicate generated labels.
+os.makedirs(output_dir, exist_ok=True)
+for output_file in (output_train_file, output_test_file):
+    with open(output_file, 'w', encoding='utf-8'):
+        pass
 
 if os.path.exists(os.path.join('./my_data', region, 'train')):
     as_line(os.path.join('./my_data', region, 'train'), output_train_file)
