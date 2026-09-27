@@ -54,8 +54,10 @@ def restruct_render(input_file, output_file):
     txt_context = ''
     with open(input_file, mode='r', encoding='utf-8') as fd:
         for l in fd.readlines():
-            txt_context += os.path.dirname(input_file) + \
-                "/" + l.replace(' ', '.jpg\t')
+            base, sep, word = l.rstrip('\r\n').partition(' ')
+            if not sep or not base or not word.strip():
+                raise ValueError(f"Malformed renderer label: {l!r}")
+            txt_context += os.path.dirname(input_file) + "/" + base + ".jpg\t" + word + '\n' 
 
     txt_context = txt_context.replace('\\', '/')
 
@@ -69,6 +71,12 @@ region = sys.argv[3]
 
 output_train_file = os.path.join(output_dir, 'rec_gt_train.txt')
 output_test_file = os.path.join(output_dir, 'rec_gt_test.txt')
+
+# Rebuild outputs so a repeated conversion does not duplicate generated labels.
+os.makedirs(output_dir, exist_ok=True)
+for output_file in (output_train_file, output_test_file):
+    with open(output_file, 'w', encoding='utf-8'):
+        pass
 
 if os.path.exists(os.path.join('./my_data', region, 'train')):
     as_line(os.path.join('./my_data', region, 'train'), output_train_file)

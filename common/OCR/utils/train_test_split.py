@@ -1,71 +1,46 @@
-import os
-import sys
-import random
-import argparse as A
-from typing import Tuple, List
+"""Split renderer labels by normalized text, repeatably across corpus directories."""
+import argparse
+import hashlib
+import unicodedata
+from pathlib import Path
 
 
-def parse_args() -> A.Namespace:
-    """
-    Get command line arguments
-
-    Returns:
-        parsed arguments
-    """
-    parser = A.ArgumentParser()
-    parser.add_argument("--output",
-                        "-o",
-                        help="path to output folder",
-                        required=True)
-    parser.add_argument("--train_ratio",
-                        "-t",
-                        type=float,
-                        default=0.8,
-                        help="train sample ratios")
-    parser.add_argument(
-        "input_labels",
-        help="path to the input file, containing all the samples")
-
-    return parser.parse_args()
+def train_test_split(labels, train_ratio=0.8, seed=20260921):
+    if not 0 < train_ratio < 1:
+        raise ValueError('train_ratio must be between 0 and 1')
+    train, test = [], []
+    seen = set()
+    for line in labels:
+        identifier, separator, text = line.rstrip('\r\n').partition(' ')
+        if not separator or not identifier or not text.strip():
+            raise ValueError(f'malformed renderer label: {line!r}')
+        if identifier in seen:
+            raise ValueError(f'duplicate image identifier: {identifier}')
+        seen.add(identifier)
+        # NFC preserves distinctions such as full-width characters. Do not use NFKC.
+        # Hash the text, not the filename: renderings of one label in different
+        # corpus folders must stay in the same split. Keep the stored label intact.
+        group = unicodedata.normalize('NFC', text.replace('\u00a0', ' '))
+        value = int.from_bytes(hashlib.sha256(f'{seed}\0{group}'.encode()).digest()[:8], 'big')
+        (train if value / 2**64 < train_ratio else test).append(line.rstrip('\r\n') + '\n')
+    return train, test
 
 
-def train_test_split(labels: List[str],
-                     train_ratio=0.8) -> Tuple[List[str], List[str]]:
-    """
-    Partitioning the labels into train labels and test labels
-    Args:
-        labels (List[str]): labels to be partitioned
-        train_ratio: proportion of training samples, between 0-1.0, default to 0.8
-    Returns:
-        A tuple of training samples and test samples
-    """
-    train_files, test_files = [], []
-    for sample in labels:
-        if random.random() < train_ratio:
-            train_files.append(sample)
-        else:
-            test_files.append(sample)
-    return train_files, test_files
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('input_labels', type=Path)
+    parser.add_argument('--output', '-o', required=True, type=Path)
+    parser.add_argument('--train_ratio', '-t', type=float, default=.8)
+    parser.add_argument('--seed', type=int, default=20260921)
+    args = parser.parse_args()
+    train, test = train_test_split(args.input_labels.read_text(encoding='utf-8').splitlines(True), args.train_ratio, args.seed)
+    if not train or not test:
+        raise ValueError('empty split: provide more independent text groups, not a different seed to improve scores')
+    args.output.mkdir(parents=True, exist_ok=True)
+    for name, rows in [('train.txt', train), ('test.txt', test)]:
+        (args.output/name).write_text(''.join(rows), encoding='utf-8')
+    print(f'train={len(train)}, dev={len(test)}; text-group split, seed={args.seed}')
 
 
-def main(args):
-    train_samples = None
-    test_samples = None
-
-    with open(args.input_labels, mode='r', encoding="utf-8") as f:
-        train_samples, test_samples = train_test_split(f.readlines(),
-                                                       args.train_ratio)
-    with open(os.path.join(args.output, 'train.txt'),
-              mode='w',
-              encoding="utf-8") as f:
-        f.write(''.join(train_samples))
-
-    with open(os.path.join(args.output, 'test.txt'),
-              mode='w',
-              encoding="utf-8") as f:
-        f.write(''.join(test_samples))
-
-
-if __name__ == "__main__":
-    args = parse_args()
-    main(args)
+if __name__ == '__main__':
+    main()
