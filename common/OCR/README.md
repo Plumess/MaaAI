@@ -1,3 +1,9 @@
+> 新版 OCR 数据、训练和验收入口已整理到 [pipeline](pipeline/README.md)。简中、繁中、英文、日文和 Char 使用 PP-OCRv6 small，只有韩文使用 Korean PP-OCRv5 mobile。
+>
+> [正式训练与验收](docs/final-training-report.md) · [原仓库与两份 PR 对照](docs/comparison-matrix.md) · [Windows 验证结果](docs/windows-validation-review.md) · [Char 返工结果](docs/char-rework-result.md) · [Windows 发布指南](docs/windows-release-validation.md) · [工程与决策追溯](docs/migration-audit.md)
+>
+> v6.18.0 基线上已完成 82,000 张冻结数据、六路线正式训练、导出检查、Windows 资源隔离和国服业务回放；formal-v2 已定向修复 Char 的 `0-1→O-1` 回归，并通过原生接口与国服业务回放；Windows 国服发布集成已经通过，官方发布版 GUI 的公招与仓库识别也已实测；繁中、英文、日文和韩文实图仍需补测。以下原 v3 说明仅作旧流程参考。
+
 # OCR
 
 基于 PaddleOCR，整理《明日方舟》所有文本生成数据集进行训练  
@@ -43,7 +49,7 @@
 
     ```bash
     # 默认只生成简中数据，其他语言改下开头的变量即可
-    sh ./steps.sh
+    bash ./steps.sh
     ```
 
 6. 开始训练
@@ -107,3 +113,5 @@
 - [ArknightsGameData](https://github.com/Kengxxiao/ArknightsGameData): 《明日方舟》游戏数据
 - [text_renderer](https://github.com/Sanster/text_renderer): Generate text images for training deep learning ocr model
 - [source-han-sans](https://github.com/adobe-fonts/source-han-sans): Source Han Sans | 思源黑体 | 思源黑體 | 思源黑體 香港 | 源ノ角ゴシック | 본고딕
+
+完整维护入口与迁移范围：[工作流程](pipeline/workflows.md)、[迁移核对](docs/migration-audit.md)。

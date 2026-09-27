@@ -20,7 +20,7 @@ uv run python -m pytest ../../tests -q
 旧流程继续使用原依赖。新字典必须先按字符映射调整预训练输出层，不能直接替换 keys。
 
 Paddle 3 PIR 导出时发现过 LayerNorm epsilon 属性转换异常。
-`../../scripts/model/repair_onnx_attributes.py` 按源参数身份与轴逐层恢复属性，拒绝未知映射；
+`../../scripts/model/repair_onnx_attributes.py` 是旧命令的薄转发；唯一实现位于 `../../pipeline/scripts/repair_onnx_attributes.py`，按源参数身份与轴逐层恢复属性，拒绝未知映射；
 修复后仍必须比较 Paddle 与 ONNX 输出、解码及实际 MAA 行为，不能把 ONNX checker 通过当作数值一致。
 
 ```bash
