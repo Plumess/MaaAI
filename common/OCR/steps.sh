@@ -46,7 +46,7 @@ tar -xvf $pretrained_model/korean_PP-OCRv3_rec_train.tar -C $pretrained_model
 
 ###### 以下是离线操作了 ######
 
-yes | unzip fonts/SourceHanSans$fontLang.zip -d $fonts_dir
+unzip -oq "fonts/SourceHanSans$fontLang.zip" -d "$fonts_dir"
 ls $PWD/$fonts_dir/SubsetOTF/$fontLang/* > $fonts_dir/fonts.txt
 
 python3 ./utils/wording.py $client

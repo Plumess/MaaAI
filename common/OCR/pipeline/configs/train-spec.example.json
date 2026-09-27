@@ -1,7 +1,7 @@
 {
   "route": "zh-CN",
   "dataset": "data/pilot",
-  "profile": "/absolute/path/to/MaaAI/common/OCR/pipeline/configs/training-recipe-v3.json",
+  "profile": "/absolute/path/to/MaaAI/common/OCR/pipeline/configs/training-recipe-v4.json",
   "checkpoint": "models/word/initial.pdparams",
   "model_config": "models/word/model.yml",
   "guard_manifest": "guard.jsonl",
